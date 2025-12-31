@@ -1,0 +1,4 @@
+Method,Train RMSE,Test RMSE,Train R²,Test R²
+Baseline (All 16 features),7.6851,7.6812,0.1136,0.0757
+PCA (15 components),7.6851,7.6812,0.1136,0.0757
+UMAP (7 components),7.8959,7.7061,0.0643,0.0696
