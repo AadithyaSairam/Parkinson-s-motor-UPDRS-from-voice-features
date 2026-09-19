@@ -1,0 +1,10 @@
+# The .zip is the same data as the extracted .data/.names files.
+*.zip
+
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+.DS_Store
+Thumbs.db
