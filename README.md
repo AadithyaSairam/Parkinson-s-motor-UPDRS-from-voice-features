@@ -1,9 +1,9 @@
-# Predicting motor UPDRS from voice — a dimensionality reduction study
+# Predicting motor UPDRS from voice: a dimensionality reduction study
 
 Can you estimate a Parkinson's patient's motor symptom score from the acoustic
 properties of their voice alone? This compares PCA and UMAP as dimensionality
 reduction front-ends to a Ridge regression on the Oxford Parkinson's
-Telemonitoring dataset — 5,875 voice recordings from 42 patients, each labelled
+Telemonitoring dataset, 5,875 voice recordings from 42 patients, each labelled
 with a clinician's motor UPDRS score.
 
 Coursework for SYDE 572 (Pattern Recognition).
@@ -19,7 +19,7 @@ Coursework for SYDE 572 (Pattern Recognition).
 | UMAP | 7 | 7.706 | 0.073 |
 
 R² of 0.076 means roughly **8 % of the variance in motor UPDRS is explained**.
-Neither reduction method beats the baseline in any meaningful sense — PCA at 15
+Neither reduction method beats the baseline in any meaningful sense, PCA at 15
 components reproduces it to four decimal places, which is what you would expect
 given that 15 components capture essentially 100 % of the variance of 16
 standardised features. The honest summary is that dimensionality reduction
@@ -34,7 +34,7 @@ the two methods indistinguishable.
 ![PCA explained variance](pca_explained_variance.png)
 
 PC1 alone accounts for 70.6 % of the variance. That is not a sign that the
-problem is easy — it reflects how correlated the features are. The jitter
+problem is easy, it reflects how correlated the features are. The jitter
 measures (`Jitter(%)`, `Jitter:RAP`, `Jitter:PPQ5`, `Jitter:DDP`) are largely
 different normalisations of the same cycle-to-cycle period perturbation, and
 the shimmer measures likewise for amplitude. There are nowhere near 16
@@ -43,13 +43,13 @@ independent things being measured here.
 ![Feature importance](feature_importance.png)
 
 The largest coefficients are shimmer (amplitude perturbation) and DFA, PPE and
-HNR — the nonlinear and noise-ratio measures. Note that coefficients this
+HNR, the nonlinear and noise-ratio measures. Note that coefficients this
 correlated cannot be read individually as importance: with features this
 collinear, the split of weight between `Shimmer:APQ11` (+2.50) and
-`Shimmer:APQ5` (−2.48) is near-arbitrary and would move substantially under
+`Shimmer:APQ5` (-2.48) is near-arbitrary and would move substantially under
 resampling.
 
-## Caveats — read these before citing the numbers
+## Caveats, read these before citing the numbers
 
 - **The split is not subject-wise.** `train_test_split` is applied at the
   recording level, so recordings from the *same patient* appear in both train
@@ -61,7 +61,7 @@ resampling.
   substantially better accuracy with nonlinear regressors (CART ensembles).
   A Ridge baseline is the right control for a dimensionality-reduction
   comparison, but "voice cannot predict UPDRS" is not a conclusion this
-  supports — only "voice cannot *linearly* predict UPDRS from these 16
+  supports, only "voice cannot *linearly* predict UPDRS from these 16
   features."
 - **UMAP for regression is unusual.** UMAP optimises for preserving local
   neighbourhood structure for visualisation; it makes no promise that the
@@ -79,7 +79,7 @@ jupyter notebook final.ipynb
 
 ## Data
 
-Oxford Parkinson's Disease Telemonitoring Dataset, UCI ML Repository —
+Oxford Parkinson's Disease Telemonitoring Dataset, UCI ML Repository,
 5,875 recordings, 42 patients, 16 voice features plus age, sex and test time.
 
 > Tsanas, A., Little, M.A., McSharry, P.E., Ramig, L.O. Accurate telemonitoring
@@ -88,5 +88,5 @@ Oxford Parkinson's Disease Telemonitoring Dataset, UCI ML Repository —
 
 ## License
 
-MIT — see [LICENSE](LICENSE). The dataset is from the UCI ML Repository and
+MIT, see [LICENSE](LICENSE). The dataset is from the UCI ML Repository and
 carries its own terms.
